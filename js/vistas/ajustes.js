@@ -7,7 +7,7 @@ import { esc, toast, elegirArchivo, descargar, reducirImagen, DIAS_CORTOS } from
 const ORDEN = [1, 2, 3, 4, 5, 6, 0];
 
 export async function accionImportarPaquete(alTerminar) {
-  const f = await elegirArchivo('.json,application/json');
+  const f = await elegirArchivo('');
   if (!f) return;
   try {
     const res = await importarPaquete(JSON.parse(await f.text()));
@@ -42,7 +42,7 @@ export function vistaBienvenida(el, redibujar) {
 }
 
 async function restaurar(alTerminar) {
-  const f = await elegirArchivo('.json,application/json');
+  const f = await elegirArchivo('');
   if (!f) return;
   try {
     await importarRespaldo(JSON.parse(await f.text()));

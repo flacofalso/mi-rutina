@@ -1,6 +1,6 @@
 // Service worker: permite usar la app sin conexión (por ejemplo, en el gimnasio).
 // Al publicar cambios, sube VERSION para que los teléfonos descarguen la nueva versión.
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE = 'mi-rutina-' + VERSION;
 const ARCHIVOS = [
   './',
