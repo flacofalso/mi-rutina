@@ -26,6 +26,28 @@ export function toast(msg, ms = 2600) {
   toastTimer = setTimeout(() => el.classList.remove('visible'), ms);
 }
 
+// Frase destacada a pantalla completa que desaparece sola (o al tocarla).
+export function mostrarFrase(texto, ms = 2800) {
+  document.querySelector('.frase')?.remove();
+  const el = document.createElement('div');
+  el.className = 'frase';
+  el.setAttribute('role', 'status');
+  el.innerHTML = `<p>${esc(texto)}</p>`;
+  document.body.append(el);
+  const cerrar = () => { el.classList.add('fuera'); setTimeout(() => el.remove(), 500); };
+  el.onclick = cerrar;
+  setTimeout(cerrar, ms);
+}
+
+// Pantalla de bienvenida (#splash) definida en el HTML de la variante.
+export function cerrarSplashLuego(ms = 2800) {
+  const s = document.getElementById('splash');
+  if (!s) return;
+  const cerrar = () => { s.classList.add('fuera'); setTimeout(() => s.remove(), 800); };
+  s.onclick = cerrar;
+  setTimeout(cerrar, ms);
+}
+
 // Hoja inferior (modal)
 export function abrirHoja(html, { titulo = '', alAbrir } = {}) {
   const hoja = $('#hoja');

@@ -1,6 +1,6 @@
 import { pedirAlmacenamientoPersistente } from './db.js';
 import { cargarEstado, tieneRutina, importarPaquete, state, aMin } from './data.js';
-import { $, $$, cerrarHoja } from './ui.js';
+import { $, $$, cerrarHoja, cerrarSplashLuego } from './ui.js';
 import { vistaHoy } from './vistas/hoy.js';
 import { vistaEntrenar, salirEntrenar } from './vistas/entrenar.js';
 import { vistaComidas } from './vistas/comidas.js';
@@ -62,6 +62,7 @@ function aplicarTema() {
 }
 
 async function iniciar() {
+  cerrarSplashLuego();
   await cargarEstado();
   await autocargarPaqueteLocal();
   aplicarTema();

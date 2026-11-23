@@ -347,6 +347,15 @@ fieldset.campo { border: 0; padding: 0; }
 @keyframes subir { from { transform: translateY(30px); opacity: 0; } }
 @keyframes aparecer { from { opacity: 0; } }
 
+/* ===== Frase a pantalla completa ===== */
+.frase {
+  position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 24px;
+  background: rgb(0 0 0 / .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  animation: aparecer .4s ease-out;
+}
+.frase p { margin: 0; max-width: 18ch; text-align: center; font: 600 2rem/1.2 var(--fuente-titulo, inherit); color: #fff; }
+.frase.fuera { opacity: 0; transition: opacity .5s; }
+
 /* ===== Toast ===== */
 #toast {
   position: fixed; left: 50%; top: calc(env(safe-area-inset-top) + 12px); transform: translate(-50%, -20px);

@@ -2,7 +2,7 @@
 // Al publicar cambios, sube VERSION para que los teléfonos descarguen la nueva versión.
 // Una variante (por ejemplo /esmeralda/) define self.VARIANTE, self.BASE y self.EXTRA
 // y luego importa este archivo.
-const VERSION = 'v3';
+const VERSION = 'v4';
 const VARIANTE = self.VARIANTE || 'base';
 const BASE = self.BASE || '';
 const PREFIJO = 'mi-rutina-' + VARIANTE + '-';

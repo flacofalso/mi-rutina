@@ -1,122 +1,237 @@
-/* Tema "esmeralda": verdes y negros, más elegante.
-   Tarde/noche (data-theme="dark"): verde profundo sobre negro.
-   Mañana (data-theme="light"): verdes claros y luminosos. */
+/* Tema "Spider Monkey" — inspirado en el ambiente de Forks:
+   bosque neblinoso, negros, verdes desaturados, plata y rojo manzana.
+   Tarde (data-theme="dark"): bosque de noche.  Mañana (data-theme="light"): niebla matinal. */
 
 :root[data-variante="esmeralda"] {
   --fuente: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --fuente-titulo: "Fraunces", Georgia, "Times New Roman", serif;
-  --radio: 20px;
+  --fuente-titulo: "Cormorant Garamond", "Cormorant", Garamond, Georgia, serif;
+  --radio: 18px;
   --radio-chico: 12px;
+  --manzana: #9e1a25;
+  --manzana-txt: #fff5f5;
 }
 
 :root[data-variante="esmeralda"][data-theme="dark"] {
-  --fondo: #0b100e;
-  --superficie: #111915;
-  --superficie-2: #17221d;
-  --texto: #e8f0ea;
-  --texto-2: #8ea397;
-  --borde: #22302a;
-  --acento: #7ccf9f;
-  --acento-txt: #06110b;
-  --acento-suave: #15291f;
-  --ok: #7ccf9f;
-  --ok-suave: #163024;
-  --rec: #d6b56a;
-  --rec-suave: #241f12;
-  --alerta: #d9a84a;
-  --peligro: #e57373;
+  --fondo: #090d0d;
+  --superficie: #0f1615;
+  --superficie-2: #16201e;
+  --texto: #e3eae7;
+  --texto-2: #8b9c97;
+  --borde: #202d2a;
+  --acento: #9cc3b2;
+  --acento-txt: #071010;
+  --acento-suave: #13231f;
+  --ok: #8fbfa8;
+  --ok-suave: #12271f;
+  --rec: #e0525c;
+  --rec-suave: #241114;
+  --alerta: #d6a24a;
+  --peligro: #e06464;
   --wsp: #25a85c;
   --sombra: none;
-  --destacada-fondo: linear-gradient(155deg, #1b3a2b 0%, #10211a 60%, #0d1813 100%);
-  --destacada-borde: #2b4a3a;
-  --timer-fondo: #1c3d2d;
-  --timer-texto: #e8f0ea;
+  --plata: linear-gradient(180deg, #f6f8f7 0%, #cdd6d3 38%, #7d8d88 68%, #dfe7e4 100%);
+  --hilo: rgb(205 214 211 / .55);
+  --niebla: radial-gradient(130% 55% at 50% -8%, #172623 0%, rgb(9 13 13 / 0) 62%);
+  --destacada-fondo: linear-gradient(160deg, #1c2f2a 0%, #101a18 55%, #0b1110 100%);
+  --destacada-borde: #273a35;
+  --timer-fondo: #142824;
+  --timer-texto: #e3eae7;
   color-scheme: dark;
 }
 
 :root[data-variante="esmeralda"][data-theme="light"] {
-  --fondo: #eef5f0;
-  --superficie: #ffffff;
-  --superficie-2: #e4efe8;
-  --texto: #0d1c14;
-  --texto-2: #4d6658;
-  --borde: #d2e2d8;
-  --acento: #1d6b47;
+  --fondo: #e7edeb;
+  --superficie: #f8fbfa;
+  --superficie-2: #dde6e3;
+  --texto: #0f1917;
+  --texto-2: #50615c;
+  --borde: #c9d6d2;
+  --acento: #2f5247;
   --acento-txt: #ffffff;
-  --acento-suave: #d8ece0;
-  --ok: #2c8a5a;
-  --ok-suave: #dcf0e3;
-  --rec: #8a6a1c;
-  --rec-suave: #f6efdb;
-  --alerta: #a8741a;
-  --peligro: #b83232;
+  --acento-suave: #d2e1db;
+  --ok: #3a7560;
+  --ok-suave: #d7e9e0;
+  --rec: #8e1622;
+  --rec-suave: #f3e0e1;
+  --alerta: #9a6a14;
+  --peligro: #a32a2a;
   --wsp: #1f9d55;
-  --sombra: 0 1px 2px rgb(13 40 25 / .05), 0 8px 24px rgb(13 40 25 / .06);
-  --destacada-fondo: linear-gradient(155deg, #23805a 0%, #17603f 55%, #114a31 100%);
+  --manzana: #8e1622;
+  --sombra: 0 1px 2px rgb(15 30 26 / .05), 0 8px 24px rgb(15 30 26 / .07);
+  --plata: linear-gradient(180deg, #5d6c68 0%, #1c2724 52%, #4a5853 100%);
+  --hilo: rgb(40 56 51 / .45);
+  --niebla: radial-gradient(130% 55% at 50% -8%, #ffffff 0%, rgb(231 237 235 / 0) 62%);
+  --destacada-fondo: linear-gradient(160deg, #3d6155 0%, #2a453c 55%, #1d3029 100%);
   --destacada-borde: transparent;
-  --timer-fondo: #0f2a1d;
-  --timer-texto: #eef5f0;
+  --timer-fondo: #13221e;
+  --timer-texto: #e7edeb;
   color-scheme: light;
 }
 
+/* ---- Fondo neblinoso ---- */
+[data-variante="esmeralda"] body { background: var(--niebla), var(--fondo); background-repeat: no-repeat; }
+
+/* ---- Marca (estilo de la referencia: serif en minúsculas, plateado, con hilos finos) ---- */
+[data-variante="esmeralda"] .metal,
+[data-variante="esmeralda"] .marca span,
+[data-variante="esmeralda"] .marca-grande span {
+  background: var(--plata);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+[data-variante="esmeralda"] .marca {
+  text-align: center;
+  padding: calc(env(safe-area-inset-top) + 14px) 16px 0;
+  font: 600 1.45rem/1 var(--fuente-titulo);
+  letter-spacing: .06em;
+  text-transform: lowercase;
+}
+[data-variante="esmeralda"] .marca span,
+[data-variante="esmeralda"] .marca-grande span { position: relative; display: inline-block; padding: .08em .3em; }
+[data-variante="esmeralda"] .marca span::before,
+[data-variante="esmeralda"] .marca-grande span::before {
+  content: ""; position: absolute; left: -.6em; right: -.6em; top: 64%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hilo) 14%, var(--hilo) 86%, transparent);
+}
+[data-variante="esmeralda"] .marca-grande span::after {
+  content: ""; position: absolute; inset: -.45em 0; pointer-events: none;
+  background:
+    linear-gradient(var(--hilo), var(--hilo)) 9% 0 / 1px 100% no-repeat,
+    linear-gradient(var(--hilo), var(--hilo)) 38% 30% / 1px 70% no-repeat,
+    linear-gradient(var(--hilo), var(--hilo)) 63% 0 / 1px 85% no-repeat,
+    linear-gradient(var(--hilo), var(--hilo)) 92% 20% / 1px 80% no-repeat;
+  -webkit-mask-image: linear-gradient(transparent, #000 25%, #000 75%, transparent);
+  mask-image: linear-gradient(transparent, #000 25%, #000 75%, transparent);
+}
+[data-variante="esmeralda"] .contenedor { padding-top: 10px; }
+
+/* ---- Pantalla de bienvenida ---- */
+#splash {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-items: center; text-align: center; padding: 24px;
+  background: radial-gradient(ellipse 120% 70% at 50% 35%, #1a2b27 0%, #0c1312 50%, #050807 100%);
+  transition: opacity .8s ease;
+  overflow: hidden;
+}
+#splash::before, #splash::after {
+  content: ""; position: absolute; width: 160%; height: 45%; left: -30%;
+  background: radial-gradient(ellipse at center, rgb(190 210 204 / .10), transparent 65%);
+  filter: blur(18px); animation: niebla 9s ease-in-out infinite alternate;
+}
+#splash::before { top: 8%; }
+#splash::after { bottom: 4%; animation-duration: 12s; animation-direction: alternate-reverse; }
+#splash.fuera { opacity: 0; pointer-events: none; }
+.splash-contenido { position: relative; z-index: 1; }
+#splash .marca-grande {
+  --plata: linear-gradient(180deg, #f6f8f7 0%, #cdd6d3 38%, #7d8d88 68%, #dfe7e4 100%);
+  --hilo: rgb(205 214 211 / .55);
+  font: 600 clamp(2.4rem, 12.5vw, 4.4rem)/1 var(--fuente-titulo);
+  white-space: nowrap;
+  text-transform: lowercase; letter-spacing: .03em; margin: 0 0 22px;
+  animation: entrar 1.2s ease-out both;
+}
+.splash-frase {
+  margin: 0 auto; max-width: 22ch;
+  font: italic 500 1.45rem/1.35 var(--fuente-titulo); color: #c9d3d0;
+  animation: entrar 1.2s .5s ease-out both;
+}
+@keyframes entrar { from { opacity: 0; transform: translateY(8px); filter: blur(4px); } }
+@keyframes niebla { to { transform: translateX(12%); } }
+
+/* ---- Pie ---- */
+[data-variante="esmeralda"] .pie {
+  text-align: center; padding: 8px 16px 18px;
+  font: italic 500 1.08rem/1.3 var(--fuente-titulo); color: var(--texto-2);
+}
+[data-variante="esmeralda"] .pie::before { content: "♥"; display: block; color: var(--rec); font-style: normal; font-size: .85rem; margin-bottom: 2px; }
+
 /* ---- Tipografía ---- */
-[data-variante="esmeralda"] body { letter-spacing: .005em; }
 [data-variante="esmeralda"] h1,
 [data-variante="esmeralda"] h2,
-[data-variante="esmeralda"] h3 { font-weight: 600; letter-spacing: -.01em; }
-[data-variante="esmeralda"] .titulo-pag { font-size: 2rem; }
-[data-variante="esmeralda"] .cab-sesion h2 { font-size: 2rem; }
-[data-variante="esmeralda"] .titulo-sec { font-size: .72rem; letter-spacing: .16em; font-weight: 700; color: var(--acento); }
-[data-variante="esmeralda"] .fecha-hoy { font-family: var(--fuente-titulo); font-size: 1.5rem; font-weight: 500; color: var(--texto); margin: 8px 0 18px; }
-[data-variante="esmeralda"] .sobre { text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; font-weight: 700; }
+[data-variante="esmeralda"] h3 { font-weight: 600; letter-spacing: 0; font-variant-numeric: lining-nums; }
+[data-variante="esmeralda"] .fecha-hoy, [data-variante="esmeralda"] .titulo-sec, .frase p { font-variant-numeric: lining-nums; text-wrap: balance; }
+[data-variante="esmeralda"] h3 { font-weight: 700; }
+[data-variante="esmeralda"] .titulo-pag,
+[data-variante="esmeralda"] .cab-sesion h2 { font-size: 2.3rem; }
+[data-variante="esmeralda"] .ej-titulo h3 { font-size: 1.28rem; line-height: 1.1; }
+[data-variante="esmeralda"] .tarjeta h3 { font-size: 1.25rem; }
+[data-variante="esmeralda"] .titulo-sec { font-size: .7rem; letter-spacing: .2em; font-weight: 700; color: var(--acento); }
+[data-variante="esmeralda"] .fecha-hoy { font: italic 600 1.7rem/1.2 var(--fuente-titulo); color: var(--texto); margin: 6px 0 16px; }
+[data-variante="esmeralda"] .sobre { text-transform: uppercase; letter-spacing: .14em; font-size: .68rem; font-weight: 700; }
+[data-variante="esmeralda"] .comida h3 { font-size: 1.3rem; }
+[data-variante="esmeralda"] .bienvenida h2 { font-size: 1.9rem; }
 
 /* ---- Superficies ---- */
 [data-variante="esmeralda"] .tarjeta { border-radius: var(--radio); padding: 16px; }
 [data-variante="esmeralda"] .tarjeta.destacada {
-  --texto: #f2f8f4;
-  --texto-2: rgb(242 248 244 / .72);
-  --borde: rgb(255 255 255 / .16);
-  --acento: #f2f8f4;
-  --acento-txt: #10301f;
+  --texto: #eef3f1;
+  --texto-2: rgb(238 243 241 / .72);
+  --borde: rgb(255 255 255 / .14);
+  --acento: #eef3f1;
+  --acento-txt: #10201b;
   background: var(--destacada-fondo);
   border-color: var(--destacada-borde);
   color: var(--texto);
   box-shadow: var(--sombra);
 }
-[data-variante="esmeralda"] .tarjeta.destacada h3 { font-size: 1.5rem; }
+[data-variante="esmeralda"] .tarjeta.destacada h3 { font-size: 1.75rem; }
 [data-variante="esmeralda"] .tarjeta.destacada .lista-mini img { border-color: transparent; }
 
 /* ---- Botones y chips ---- */
-[data-variante="esmeralda"] .btn { border-radius: 999px; letter-spacing: .01em; }
+[data-variante="esmeralda"] .btn { border-radius: 999px; letter-spacing: .02em; }
+[data-variante="esmeralda"] .btn-primario { background: var(--manzana); color: var(--manzana-txt); box-shadow: 0 6px 18px rgb(142 22 34 / .28); }
 [data-variante="esmeralda"] .btn-chico { border-radius: 999px; }
 [data-variante="esmeralda"] .chip.activo { background: var(--acento); color: var(--acento-txt); border-color: var(--acento); }
 [data-variante="esmeralda"] .chip-carga { background: var(--rec-suave); color: var(--rec); }
-[data-variante="esmeralda"] .segmentado { border-radius: 999px; }
+[data-variante="esmeralda"] .segmentado,
 [data-variante="esmeralda"] .segmentado button { border-radius: 999px; }
+[data-variante="esmeralda"] .dias-semana input:checked + span { background: var(--acento); color: var(--acento-txt); border-color: var(--acento); }
 
 /* ---- Entrenamiento ---- */
-[data-variante="esmeralda"] .ejercicio { --c: var(--acento) !important; border-left-width: 3px; }
-[data-variante="esmeralda"] .etq { background: var(--acento); color: var(--acento-txt); }
+[data-variante="esmeralda"] .ejercicio { --c: var(--acento) !important; border-left-width: 2px; }
+[data-variante="esmeralda"] .etq { background: var(--acento); color: var(--acento-txt); font-family: var(--fuente); }
 [data-variante="esmeralda"] .s-in { border-radius: 12px; }
 [data-variante="esmeralda"] .s-check { border-radius: 50%; width: 42px; }
 [data-variante="esmeralda"] .serie.hecha .s-check { color: var(--acento-txt); }
-[data-variante="esmeralda"] .biserie { border-color: var(--acento); border-style: solid; border-width: 1px; }
-[data-variante="esmeralda"] .ej-img, [data-variante="esmeralda"] .img-grande { border-radius: 14px; }
+[data-variante="esmeralda"] .biserie { border: 1px solid var(--acento); }
+[data-variante="esmeralda"] .ej-img,
+[data-variante="esmeralda"] .img-grande { border-radius: 14px; }
+[data-variante="esmeralda"] .progreso-circ span { background: var(--superficie); }
 
-/* ---- Temporizador, avisos y barra de pestañas ---- */
+/* ---- Frase al completar un ejercicio ---- */
+[data-variante="esmeralda"] .frase { background: radial-gradient(ellipse at center, rgb(20 36 32 / .82), rgb(5 8 7 / .92)); }
+[data-variante="esmeralda"] .frase p {
+  --plata: linear-gradient(180deg, #f6f8f7 0%, #cdd6d3 38%, #7d8d88 68%, #dfe7e4 100%);
+  font: italic 600 2.4rem/1.15 var(--fuente-titulo);
+  background: var(--plata); -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: entrar .9s ease-out both;
+}
+[data-variante="esmeralda"] .frase p::after { content: ""; display: block; width: 56px; height: 1px; margin: 16px auto 0; background: #e0525c; }
+
+/* ---- Temporizador, avisos y pestañas ---- */
 [data-variante="esmeralda"] .timer { background: var(--timer-fondo); color: var(--timer-texto); border-radius: 22px; }
-[data-variante="esmeralda"] .timer-barra { background: var(--acento); }
-[data-variante="esmeralda"][data-theme="light"] .timer-barra { background: #7ccf9f; }
-[data-variante="esmeralda"] .timer.listo { background: #2c8a5a; color: #fff; }
+[data-variante="esmeralda"] .timer-barra { background: #9cc3b2; }
+[data-variante="esmeralda"] .timer.listo { background: #3a7560; color: #fff; }
+[data-variante="esmeralda"] .timer.pasado { background: var(--manzana); color: #fff; }
 [data-variante="esmeralda"] #toast { background: var(--timer-fondo); color: var(--timer-texto); border-radius: 999px; }
 [data-variante="esmeralda"] .bloque-entreno { background: var(--timer-fondo); color: var(--timer-texto); border-radius: 999px; }
-[data-variante="esmeralda"] .linea-tiempo .es-entreno::before { background: var(--acento); border-color: var(--acento); }
+[data-variante="esmeralda"] .linea-tiempo .es-entreno::before { background: var(--manzana); border-color: var(--manzana); }
 [data-variante="esmeralda"] .tabbar { border-top-color: transparent; box-shadow: 0 -1px 0 var(--borde); }
 [data-variante="esmeralda"] .tabbar a.activo span { font-weight: 800; }
 
-/* ---- Bienvenida ---- */
+/* ---- Bienvenida (importación inicial) ---- */
 [data-variante="esmeralda"] .logo-grande { font-size: 0; }
 [data-variante="esmeralda"] .logo-grande::before {
-  content: ""; display: inline-block; width: 84px; height: 84px;
+  content: ""; display: inline-block; width: 88px; height: 88px; border-radius: 22px;
   background: url("icons/icon.svg") center / contain no-repeat;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  #splash::before, #splash::after { animation: none; }
+}
+
+/* Números modernos en títulos (Cormorant usa números antiguos por defecto) */
+[data-variante="esmeralda"] .fecha-hoy,
+[data-variante="esmeralda"] .pie,
+[data-variante="esmeralda"] .frase p { font-variant-numeric: lining-nums; }

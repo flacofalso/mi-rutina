@@ -3,7 +3,7 @@ import {
   state, semanaActual, proximoDia, diasCompletadosSemana, registroAnterior, imagenDe, guardarImagen,
   explicarIntensidad, notasTecnicas, guardarSesion,
 } from '../data.js';
-import { $, $$, esc, toast, abrirHoja, cerrarHoja, fmtFecha, fmtNum, aNum, elegirArchivo, reducirImagen } from '../ui.js';
+import { $, esc, toast, abrirHoja, cerrarHoja, fmtFecha, fmtNum, aNum, elegirArchivo, reducirImagen, mostrarFrase } from '../ui.js';
 import { iniciarDescanso, detenerDescanso } from '../timer.js';
 import { SENSACIONES } from '../resumen.js';
 
@@ -191,6 +191,7 @@ export async function vistaEntrenar(el, params) {
         }
         if (!r.reps && /^\d+$/.test(e.reps)) r.reps = e.reps;
         if (!b.inicio) b.inicio = new Date().toISOString();
+        if (window.APP?.fraseEjercicio && e.registros.every((x) => x.hecho)) mostrarFrase(window.APP.fraseEjercicio);
         const sig = siguienteSerie(i, j);
         const grupo = e.biserie ? b.ejercicios.filter((x) => x.biserie === e.biserie) : [e];
         const sigeEnBiserie = sig && e.biserie && b.ejercicios[sig.i].biserie === e.biserie;
