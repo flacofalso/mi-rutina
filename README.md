@@ -64,6 +64,21 @@ El lector busca los encabezados, no posiciones fijas:
 - Una celda `Series` combinada entre dos ejercicios se interpreta como **biserie**.
 - Los rangos que Excel convierte en fecha (por ejemplo, `8-12` → 8-dic) se recuperan automáticamente.
 
+## Variantes
+
+La misma app puede publicarse en varias versiones, cada una con su propio diseño, ícono y datos (guardados por separado en el dispositivo):
+
+| Ruta | Diseño |
+|---|---|
+| `/` | Naranja; claro u oscuro según el sistema |
+| `/esmeralda/` | Verde y negro, con tipografía serif. Oscuro si se entrena de tarde, claro si se entrena de mañana |
+
+Una variante es una carpeta con su propio `index.html` (que define `window.APP`), `tema.css`, `manifest.webmanifest`, íconos y un `sw.js` que importa el de la raíz. Su paquete personal se genera con:
+
+```bash
+python herramientas/crear_paquete.py "Planilla.xlsx" --datos privado/esmeralda
+```
+
 ## Desarrollo
 
 No necesita compilación.

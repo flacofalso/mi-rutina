@@ -7,13 +7,16 @@ El paquete reúne todo lo que NO se publica en el repositorio:
 
 Uso (desde la raíz del proyecto):
     python herramientas/crear_paquete.py "Mi Rutina.xlsx"
+    python herramientas/crear_paquete.py "Otra.xlsx" --datos privado/esmeralda
 
-Archivos de entrada (en la carpeta privado/, ignorada por git):
-    privado/imagenes.json   {"Nombre del ejercicio": "ruta/a/imagen.jpg", ...}
-    privado/nutricion.json  plan de alimentación (ver README)
+Archivos de entrada (en la carpeta de datos, por defecto privado/, ignorada por git):
+    imagenes.json   {"Nombre del ejercicio": "ruta/a/imagen.jpg", ...}  (rutas desde la raíz)
+    nutricion.json  plan de alimentación (ver README)
+La salida queda en <carpeta de datos>/paquete.json.
 
 Requiere: pip install pillow
 """
+import argparse
 import base64
 import io
 import json
@@ -27,7 +30,6 @@ except ImportError:  # pragma: no cover
     sys.exit("Falta Pillow. Instálalo con: pip install pillow")
 
 RAIZ = Path(__file__).resolve().parent.parent
-PRIVADO = RAIZ / "privado"
 LADO_MAX = 640
 
 
@@ -47,9 +49,14 @@ def imagen_a_dataurl(ruta: Path) -> str:
 
 
 def main() -> None:
-    if len(sys.argv) < 2:
-        sys.exit(__doc__)
-    excel = Path(sys.argv[1])
+    ap = argparse.ArgumentParser(description="Genera el paquete personal para la app.")
+    ap.add_argument("excel", help="planilla .xlsx de la rutina")
+    ap.add_argument("--datos", default="privado", help="carpeta con imagenes.json y nutricion.json")
+    args = ap.parse_args()
+    datos = Path(args.datos)
+    if not datos.is_absolute():
+        datos = RAIZ / datos
+    excel = Path(args.excel)
     if not excel.is_absolute():
         excel = RAIZ / excel
     if not excel.exists():
@@ -63,7 +70,7 @@ def main() -> None:
         "imagenes": {},
     }
 
-    mapa = PRIVADO / "imagenes.json"
+    mapa = datos / "imagenes.json"
     if mapa.exists():
         for nombre, ruta in json.loads(mapa.read_text(encoding="utf-8")).items():
             archivo = RAIZ / ruta
@@ -73,12 +80,12 @@ def main() -> None:
             paquete["imagenes"][nombre] = imagen_a_dataurl(archivo)
             print(f"  ✓ {nombre}")
 
-    nutri = PRIVADO / "nutricion.json"
+    nutri = datos / "nutricion.json"
     if nutri.exists():
         paquete["nutricion"] = json.loads(nutri.read_text(encoding="utf-8"))
 
-    PRIVADO.mkdir(exist_ok=True)
-    salida = PRIVADO / "paquete.json"
+    datos.mkdir(parents=True, exist_ok=True)
+    salida = datos / "paquete.json"
     salida.write_text(json.dumps(paquete, ensure_ascii=False), encoding="utf-8")
     kb = salida.stat().st_size / 1024
     print(f"\nPaquete creado: {salida} ({kb:.0f} KB)")

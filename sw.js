@@ -1,11 +1,13 @@
 // Service worker: permite usar la app sin conexión (por ejemplo, en el gimnasio).
 // Al publicar cambios, sube VERSION para que los teléfonos descarguen la nueva versión.
-const VERSION = 'v2';
-const CACHE = 'mi-rutina-' + VERSION;
-const ARCHIVOS = [
-  './',
-  'index.html',
-  'manifest.webmanifest',
+// Una variante (por ejemplo /esmeralda/) define self.VARIANTE, self.BASE y self.EXTRA
+// y luego importa este archivo.
+const VERSION = 'v3';
+const VARIANTE = self.VARIANTE || 'base';
+const BASE = self.BASE || '';
+const PREFIJO = 'mi-rutina-' + VARIANTE + '-';
+const CACHE = PREFIJO + VERSION;
+const COMUNES = [
   'css/styles.css',
   'js/app.js',
   'js/db.js',
@@ -19,9 +21,18 @@ const ARCHIVOS = [
   'js/vistas/comidas.js',
   'js/vistas/historial.js',
   'js/vistas/ajustes.js',
+];
+const PROPIOS = self.EXTRA || [
+  './',
+  'index.html',
+  'manifest.webmanifest',
   'icons/icon.svg',
   'icons/icon-192.png',
   'icons/icon-512.png',
+];
+const ARCHIVOS = [
+  ...PROPIOS,
+  ...COMUNES.map((f) => BASE + f),
   'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
 ];
 
@@ -32,7 +43,7 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k.startsWith('mi-rutina-') && k !== CACHE).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE && (k.startsWith(PREFIJO) || (VARIANTE === 'base' && /^mi-rutina-v\d+$/.test(k)))).map((k) => caches.delete(k))))
       .then(() => self.clients.claim()),
   );
 });

@@ -68,7 +68,7 @@ export function vistaAjustes(el) {
         <button data-hora="07:00" class="${c.horaEntreno === '07:00' ? 'activo' : ''}">☀️ 07:00–08:00</button>
       </div>
       <label class="campo fila">Otra hora de inicio <input type="time" id="hora" value="${esc(c.horaEntreno)}"></label>
-      <p class="ayuda">Los horarios de comida se ajustan solos: entrenando de noche, la once es tu preentreno y la cena el posentreno. Entrenando de mañana, una colación liviana antes y el desayuno después.</p>
+      <p class="ayuda">Los horarios de comida se ajustan solos: entrenando de noche, la once es tu preentreno y la cena el posentreno. Entrenando de mañana, una colación liviana antes y el desayuno después.${window.APP?.temaPorHorario ? ' El modo tarde usa tonos oscuros y el de mañana, tonos claros.' : ''}</p>
       <h3>Días de entrenamiento</h3>
       <div class="dias-semana">
         ${ORDEN.map((d) => `<label><input type="checkbox" value="${d}" ${c.diasEntreno.includes(d) ? 'checked' : ''}><span>${DIAS_CORTOS[d]}</span></label>`).join('')}

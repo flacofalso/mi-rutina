@@ -1,0 +1,122 @@
+/* Tema "esmeralda": verdes y negros, más elegante.
+   Tarde/noche (data-theme="dark"): verde profundo sobre negro.
+   Mañana (data-theme="light"): verdes claros y luminosos. */
+
+:root[data-variante="esmeralda"] {
+  --fuente: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fuente-titulo: "Fraunces", Georgia, "Times New Roman", serif;
+  --radio: 20px;
+  --radio-chico: 12px;
+}
+
+:root[data-variante="esmeralda"][data-theme="dark"] {
+  --fondo: #0b100e;
+  --superficie: #111915;
+  --superficie-2: #17221d;
+  --texto: #e8f0ea;
+  --texto-2: #8ea397;
+  --borde: #22302a;
+  --acento: #7ccf9f;
+  --acento-txt: #06110b;
+  --acento-suave: #15291f;
+  --ok: #7ccf9f;
+  --ok-suave: #163024;
+  --rec: #d6b56a;
+  --rec-suave: #241f12;
+  --alerta: #d9a84a;
+  --peligro: #e57373;
+  --wsp: #25a85c;
+  --sombra: none;
+  --destacada-fondo: linear-gradient(155deg, #1b3a2b 0%, #10211a 60%, #0d1813 100%);
+  --destacada-borde: #2b4a3a;
+  --timer-fondo: #1c3d2d;
+  --timer-texto: #e8f0ea;
+  color-scheme: dark;
+}
+
+:root[data-variante="esmeralda"][data-theme="light"] {
+  --fondo: #eef5f0;
+  --superficie: #ffffff;
+  --superficie-2: #e4efe8;
+  --texto: #0d1c14;
+  --texto-2: #4d6658;
+  --borde: #d2e2d8;
+  --acento: #1d6b47;
+  --acento-txt: #ffffff;
+  --acento-suave: #d8ece0;
+  --ok: #2c8a5a;
+  --ok-suave: #dcf0e3;
+  --rec: #8a6a1c;
+  --rec-suave: #f6efdb;
+  --alerta: #a8741a;
+  --peligro: #b83232;
+  --wsp: #1f9d55;
+  --sombra: 0 1px 2px rgb(13 40 25 / .05), 0 8px 24px rgb(13 40 25 / .06);
+  --destacada-fondo: linear-gradient(155deg, #23805a 0%, #17603f 55%, #114a31 100%);
+  --destacada-borde: transparent;
+  --timer-fondo: #0f2a1d;
+  --timer-texto: #eef5f0;
+  color-scheme: light;
+}
+
+/* ---- Tipografía ---- */
+[data-variante="esmeralda"] body { letter-spacing: .005em; }
+[data-variante="esmeralda"] h1,
+[data-variante="esmeralda"] h2,
+[data-variante="esmeralda"] h3 { font-weight: 600; letter-spacing: -.01em; }
+[data-variante="esmeralda"] .titulo-pag { font-size: 2rem; }
+[data-variante="esmeralda"] .cab-sesion h2 { font-size: 2rem; }
+[data-variante="esmeralda"] .titulo-sec { font-size: .72rem; letter-spacing: .16em; font-weight: 700; color: var(--acento); }
+[data-variante="esmeralda"] .fecha-hoy { font-family: var(--fuente-titulo); font-size: 1.5rem; font-weight: 500; color: var(--texto); margin: 8px 0 18px; }
+[data-variante="esmeralda"] .sobre { text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; font-weight: 700; }
+
+/* ---- Superficies ---- */
+[data-variante="esmeralda"] .tarjeta { border-radius: var(--radio); padding: 16px; }
+[data-variante="esmeralda"] .tarjeta.destacada {
+  --texto: #f2f8f4;
+  --texto-2: rgb(242 248 244 / .72);
+  --borde: rgb(255 255 255 / .16);
+  --acento: #f2f8f4;
+  --acento-txt: #10301f;
+  background: var(--destacada-fondo);
+  border-color: var(--destacada-borde);
+  color: var(--texto);
+  box-shadow: var(--sombra);
+}
+[data-variante="esmeralda"] .tarjeta.destacada h3 { font-size: 1.5rem; }
+[data-variante="esmeralda"] .tarjeta.destacada .lista-mini img { border-color: transparent; }
+
+/* ---- Botones y chips ---- */
+[data-variante="esmeralda"] .btn { border-radius: 999px; letter-spacing: .01em; }
+[data-variante="esmeralda"] .btn-chico { border-radius: 999px; }
+[data-variante="esmeralda"] .chip.activo { background: var(--acento); color: var(--acento-txt); border-color: var(--acento); }
+[data-variante="esmeralda"] .chip-carga { background: var(--rec-suave); color: var(--rec); }
+[data-variante="esmeralda"] .segmentado { border-radius: 999px; }
+[data-variante="esmeralda"] .segmentado button { border-radius: 999px; }
+
+/* ---- Entrenamiento ---- */
+[data-variante="esmeralda"] .ejercicio { --c: var(--acento) !important; border-left-width: 3px; }
+[data-variante="esmeralda"] .etq { background: var(--acento); color: var(--acento-txt); }
+[data-variante="esmeralda"] .s-in { border-radius: 12px; }
+[data-variante="esmeralda"] .s-check { border-radius: 50%; width: 42px; }
+[data-variante="esmeralda"] .serie.hecha .s-check { color: var(--acento-txt); }
+[data-variante="esmeralda"] .biserie { border-color: var(--acento); border-style: solid; border-width: 1px; }
+[data-variante="esmeralda"] .ej-img, [data-variante="esmeralda"] .img-grande { border-radius: 14px; }
+
+/* ---- Temporizador, avisos y barra de pestañas ---- */
+[data-variante="esmeralda"] .timer { background: var(--timer-fondo); color: var(--timer-texto); border-radius: 22px; }
+[data-variante="esmeralda"] .timer-barra { background: var(--acento); }
+[data-variante="esmeralda"][data-theme="light"] .timer-barra { background: #7ccf9f; }
+[data-variante="esmeralda"] .timer.listo { background: #2c8a5a; color: #fff; }
+[data-variante="esmeralda"] #toast { background: var(--timer-fondo); color: var(--timer-texto); border-radius: 999px; }
+[data-variante="esmeralda"] .bloque-entreno { background: var(--timer-fondo); color: var(--timer-texto); border-radius: 999px; }
+[data-variante="esmeralda"] .linea-tiempo .es-entreno::before { background: var(--acento); border-color: var(--acento); }
+[data-variante="esmeralda"] .tabbar { border-top-color: transparent; box-shadow: 0 -1px 0 var(--borde); }
+[data-variante="esmeralda"] .tabbar a.activo span { font-weight: 800; }
+
+/* ---- Bienvenida ---- */
+[data-variante="esmeralda"] .logo-grande { font-size: 0; }
+[data-variante="esmeralda"] .logo-grande::before {
+  content: ""; display: inline-block; width: 84px; height: 84px;
+  background: url("icons/icon.svg") center / contain no-repeat;
+}

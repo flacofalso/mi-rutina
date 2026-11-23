@@ -1,5 +1,5 @@
 import { pedirAlmacenamientoPersistente } from './db.js';
-import { cargarEstado, tieneRutina, importarPaquete } from './data.js';
+import { cargarEstado, tieneRutina, importarPaquete, state, aMin } from './data.js';
 import { $, $$, cerrarHoja } from './ui.js';
 import { vistaHoy } from './vistas/hoy.js';
 import { vistaEntrenar, salirEntrenar } from './vistas/entrenar.js';
@@ -46,14 +46,26 @@ async function render() {
 async function autocargarPaqueteLocal() {
   if (tieneRutina() || !['localhost', '127.0.0.1'].includes(location.hostname)) return;
   try {
-    const r = await fetch('privado/paquete.json', { cache: 'no-store' });
+    const r = await fetch(window.APP?.paqueteLocal || 'privado/paquete.json', { cache: 'no-store' });
     if (r.ok) await importarPaquete(await r.json());
   } catch { /* no existe */ }
+}
+
+// Variantes con tema según horario: entrenar de mañana => tonos claros; de tarde/noche => oscuros.
+function aplicarTema() {
+  if (!window.APP?.temaPorHorario) return;
+  const tema = aMin(state.config.horaEntreno) < 720 ? 'light' : 'dark';
+  document.documentElement.dataset.theme = tema;
+  try { localStorage.setItem('tema-' + window.APP.id, tema); } catch { /* opcional */ }
+  const fondo = getComputedStyle(document.documentElement).getPropertyValue('--fondo').trim();
+  document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.content = fondo; m.removeAttribute('media'); });
 }
 
 async function iniciar() {
   await cargarEstado();
   await autocargarPaqueteLocal();
+  aplicarTema();
+  window.addEventListener('config-cambiada', aplicarTema);
   pedirAlmacenamientoPersistente();
   window.addEventListener('hashchange', render);
   await render();

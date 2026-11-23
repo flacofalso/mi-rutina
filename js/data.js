@@ -44,6 +44,7 @@ export async function setSemanaActiva(nombre) {
 export async function guardarConfig(parcial) {
   state.config = { ...state.config, ...parcial };
   await kv.set('config', state.config);
+  window.dispatchEvent(new CustomEvent('config-cambiada'));
 }
 
 // ---------- Importación ----------

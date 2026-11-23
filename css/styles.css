@@ -65,7 +65,7 @@ body {
 }
 body.con-timer { padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom) + 96px); }
 body.con-hoja { overflow: hidden; }
-h1, h2, h3 { line-height: 1.2; margin: 0; }
+h1, h2, h3 { line-height: 1.2; margin: 0; font-family: var(--fuente-titulo, inherit); }
 a { color: var(--acento); }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; }

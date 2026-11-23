@@ -1,5 +1,6 @@
 // Almacenamiento local (IndexedDB). Todo queda solo en este dispositivo.
-const DB_NAME = 'mi-rutina';
+// Cada variante de la app (por ejemplo, /esmeralda/) guarda sus datos por separado.
+const DB_NAME = 'mi-rutina' + (globalThis.APP?.id ? '-' + globalThis.APP.id : '');
 const VERSION = 1;
 let dbPromise;
 
