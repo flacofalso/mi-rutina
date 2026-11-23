@@ -1,0 +1,13 @@
+# Datos personales: NUNCA se publican
+privado/
+dia-*/
+plan-comida/
+*.xlsx
+*.xls
+respaldo-rutina-*.json
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+.vscode/
+__pycache__/
